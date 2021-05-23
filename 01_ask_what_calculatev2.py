@@ -27,7 +27,7 @@ def string_check(choice, options):
 # list of valid options of what can be calculated
 valid_calculation = [
     ["angle", "an"],
-    ["short side", "ss"],
+    ["short side", "leg", "ss"],
     ["hypotenuse", "h"],
     ["area", "ar"],
     ["perimeter", "p"]
@@ -48,9 +48,12 @@ while calculation != "xxx":
     if calculation == "xxx":
         break
 
-    # check calculation option is valid
     calculation_choice = string_check(calculation, valid_calculation)
-    print("You want to calculate '{}'".format(calculation_choice))
 
-    if calculation_choice != "xxx" and calculation_choice != ""
+    if calculation_choice != "xxx" and calculation_choice != "invalid choice":
+        # check calculation option is valid
+        print("You want to calculate '{}'".format(calculation_choice))
+        print()
 
+    else:
+        print("Please select a valid option\n")
