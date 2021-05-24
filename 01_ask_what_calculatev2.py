@@ -51,16 +51,12 @@ while calculation != "xxx":
     calculation_choice = string_check(calculation, valid_calculation)
 
     if calculation_choice != "xxx" and calculation_choice != "invalid choice":
-<<<<<<< Updated upstream
+
         # check calculation option is valid
         print("You want to calculate '{}'".format(calculation_choice))
         print()
-=======
-        print("Calculation: {}".format(calculation_choice))
 
-    else:
-        pass
->>>>>>> Stashed changes
+        print("Calculation: {}".format(calculation_choice))
 
     else:
         print("Error, please try again")
