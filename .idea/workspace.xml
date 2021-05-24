@@ -23,21 +23,33 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< Updated upstream
   <component name="ProjectId" id="1sy1lKLJFzKO58FCkzbrDZacg80" />
+=======
+  <component name="ProjectId" id="1smFWussvPB4vEcDnoeF5fiQPJ4" />
+>>>>>>> Stashed changes
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+<<<<<<< Updated upstream
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+=======
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+>>>>>>> Stashed changes
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\volodiny71299\OneDrive - Massey High School\Documents\COM201\Right-Angled-Triangle" />
     </key>
   </component>
+<<<<<<< Updated upstream
   <component name="RunManager" selected="Python.02_number_checker">
+=======
+  <component name="RunManager" selected="Python.01_ask_what_calculatev2">
+>>>>>>> Stashed changes
     <configuration default="true" type="tests" factoryName="Attests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -57,7 +69,11 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
+<<<<<<< Updated upstream
     <configuration name="01_ask_what_calculatev2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+=======
+    <configuration name="01_ask_what_calculate" type="PythonConfigurationType" factoryName="Python" temporary="true">
+>>>>>>> Stashed changes
       <module name="Right-Angled-Triangle" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -69,7 +85,11 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+<<<<<<< Updated upstream
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/01_ask_what_calculatev2.py" />
+=======
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/01_ask_what_calculate.py" />
+>>>>>>> Stashed changes
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -78,19 +98,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+<<<<<<< Updated upstream
     <configuration name="01_ask_what_calculatev3" type="PythonConfigurationType" factoryName="Python" temporary="true">
+=======
+    <configuration name="01_ask_what_calculatev2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+>>>>>>> Stashed changes
       <module name="Right-Angled-Triangle" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\Yara\PycharmProjects\test\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+<<<<<<< Updated upstream
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/01_ask_what_calculatev3.py" />
+=======
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/01_ask_what_calculatev2.py" />
+>>>>>>> Stashed changes
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -99,7 +127,11 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+<<<<<<< Updated upstream
     <configuration name="02_number_checker" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+=======
+    <configuration name="01_getting_values" type="PythonConfigurationType" factoryName="Python" temporary="true">
+>>>>>>> Stashed changes
       <module name="Right-Angled-Triangle" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -111,7 +143,11 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+<<<<<<< Updated upstream
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/02_number_checker.py" />
+=======
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/01_getting_values.py" />
+>>>>>>> Stashed changes
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -120,6 +156,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+<<<<<<< Updated upstream
     <configuration name="06_string_check_v5" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Right-Angled-Triangle" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -176,6 +213,18 @@
         <item itemvalue="Python.01_ask_what_calculatev2" />
         <item itemvalue="Python.06_string_check_v5" />
         <item itemvalue="Python.07_string_analyser" />
+=======
+    <list>
+      <item itemvalue="Python.01_ask_what_calculate" />
+      <item itemvalue="Python.01_ask_what_calculatev2" />
+      <item itemvalue="Python.01_getting_values" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.01_ask_what_calculatev2" />
+        <item itemvalue="Python.01_ask_what_calculate" />
+        <item itemvalue="Python.01_getting_values" />
+>>>>>>> Stashed changes
       </list>
     </recent_temporary>
   </component>
@@ -201,6 +250,7 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< Updated upstream
     <state width="936" height="331" key="GridCell.Tab.0.bottom" timestamp="1621835061895">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -236,5 +286,37 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
+=======
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621470061475">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621470061475" />
+    <state width="1899" height="291" key="GridCell.Tab.0.bottom" timestamp="1621470369662">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="291" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621470369662" />
+    <state width="1899" height="291" key="GridCell.Tab.0.center" timestamp="1621470369662">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="291" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621470369662" />
+    <state width="1899" height="291" key="GridCell.Tab.0.left" timestamp="1621470369662">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="291" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621470369662" />
+    <state width="1899" height="291" key="GridCell.Tab.0.right" timestamp="1621470369662">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="291" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621470369662" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1621473606527">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621473606527" />
+    <state x="2331" y="182" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1621470721789" />
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1621829828456">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1621829828456" />
+    <state x="2576" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1621469898028" />
+>>>>>>> Stashed changes
   </component>
 </project>
