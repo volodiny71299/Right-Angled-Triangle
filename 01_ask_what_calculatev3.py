@@ -1,5 +1,11 @@
 
 
+# original code from - https://www.geeksforgeeks.org/python-get-first-element-of-each-sublist/
+# element of each sublist in a list of lists
+def Extract(lst):
+    return [item[0] for item in lst]
+
+
 # function goes here
 def string_check(choice, options):
 
@@ -45,15 +51,22 @@ while calculation != "xxx":
     # ask user what they are calculating
     calculation = input("What to calculate? ").lower()
 
+    # if the exit code is entered, stops the loop
     if calculation == "xxx":
         break
 
+    # checks that the input for what is needed to be calculated is correct
     calculation_choice = string_check(calculation, valid_calculation)
 
+    # if the input is correct return a message saying what you chose
     if calculation_choice != "xxx" and calculation_choice != "invalid choice":
         # check calculation option is valid
         print("You want to calculate '{}'".format(calculation_choice))
         print()
 
+    # print error message and separate first item of sublist and put it into error message
     else:
-        print("Error, please try again")
+        # code to separate messages -
+        # https://stackoverflow.com/questions/11178061/print-list-without-brackets-in-a-single-row
+        print("Error, please try again\n"
+              "Valid options are -", ', '.join(Extract(valid_calculation)), "\n")
