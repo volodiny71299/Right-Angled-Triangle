@@ -32,17 +32,10 @@ def string_check(choice, options):
 
 # list of valid options of what can be calculated
 valid_calculation = [
-    ["angle", "an"],
-    ["area", "ar"],
+    ["angle", "an", "ang"],
     ["hypotenuse", "h"],
-    ["perimeter", "perimetre", "p"],
-    ["short side", "leg", "ss"]
-]
-
-# yes and no function for (used in previous work)
-yes_no = [
-    ["yes", "y"],
-    ["no", "n"]
+    ["the opposite side", "opposite", "o"],
+    ["the adjacent side", "adjacent", "ad"],
 ]
 
 calculation = 0

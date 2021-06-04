@@ -1,5 +1,8 @@
 # ask the user what units they want in their calculations
 
+def Extract(lst):
+    return [item[0] for item in lst]
+
 
 # string checker
 def string_check(choice, options):
@@ -43,7 +46,7 @@ def valid_length():
     while length_unit != "invalid choice":
         
         # get the users unit for the length
-        length_unit = input("Choose your measuring unit or type 'xxx' to keep it default (units)\n").lower()
+        length_unit = input("Choose your measuring unit or keep blank for the default option (units)\n").lower()
 
         # if user chooses to type in 'xxx' chooses 'units' as default measuring unit
         if length_unit == "":
@@ -58,24 +61,35 @@ def valid_length():
 
         # if not in list, prints an error to try again
         else:
-            print("Error, please try again\n")
+            print("Please choose from -", ', '.join(Extract(valid_length)), "\n")
 
-# getting mesuring untis
-get_units = valid_length()
 
-# prints out the unit that the user chose
-print("You chose to use {} for your measurements".format(get_units))
+def deg_rad():
+    
+    deg_rad_list = [
+        ["degrees", "degree", "deg", "d"],
+        ["radians", "radian", "rad", "r"]
+    ]
 
-yes_no = [
-    ["yes", "y"],
-    ["no", "n"]
-]
+    angle_input = ""
+    while angle_input != "invalid choice":
 
-angle_unit = input("Would your angles in degrees? ")
-angle_choice = string_check(angle_unit, yes_no)
+        angle_input = input("Degree or radians? ").lower()
 
-if angle_choice == "yes":
-    print("You chose degrees")
+        chosen_angle = string_check(angle_input, deg_rad_list)
+        
+        if chosen_angle != "invalid choice":
+            return chosen_angle
 
-else:
-    print("You chose to do radians")
+        else:
+            print("Please choose between -", ' and '.join(Extract(deg_rad_list)), "\n")
+
+
+# getting length untis
+get_length_unit = valid_length()
+
+# getting angle units
+get_angle_unit = deg_rad()
+
+# print out chosen results
+print("300 {}\n43 {}".format(get_length_unit, get_angle_unit))
