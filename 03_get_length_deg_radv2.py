@@ -86,10 +86,11 @@ def deg_rad():
 
 
 # getting length untis
-get_length_unit = valid_length()
+# get_length_unit = valid_length()
 
 # getting angle units
 get_angle_unit = deg_rad()
 
 # print out chosen results
-print("300 {}\n43 {}".format(get_length_unit, get_angle_unit))
+# print("300 {}\n43 {}".format(get_length_unit, get_angle_unit))
+print("You chose to use {}".format(get_angle_unit))

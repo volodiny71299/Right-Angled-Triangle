@@ -31,7 +31,7 @@ def num_check(question, error, low, high, num_type):
 
 
 # main routine goes here
-get_angle = num_check("What is the value of the angle ", "Enter a value between 0 and 90\n", 0, 90, float)
+get_angle = num_check("\nWhat is the value of the angle ", "Enter a value between 0 and 90\n", 0, 90, float)
 
 get_angle_radian = np.radians(get_angle)
 print("\nRadian value:\n", get_angle_radian)

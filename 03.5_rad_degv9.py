@@ -2,10 +2,28 @@
 import numpy as np
 
 
+# number checker with custom error messages and max and min limits
+def num_check(question, error, low, high, num_type):
+    valid = False
+    while not valid:
+        try:
+            response = num_type(input(question))
+
+            if low < response < high:
+                return response
+            else:
+                print(error)
+
+        except ValueError:
+            print(error)
+
+
+# turning first item of each sublist into a list
 def Extract(lst):
     return [item[0] for item in lst]
 
 
+# checks for valid input from the user, keeps going until valid
 def string_check(choice, options):
 
     for var_list in options:
@@ -28,6 +46,8 @@ def string_check(choice, options):
     else:
         return "invalid choice"
 
+
+# get deg/rad for your measurements
 def deg_rad():
     
     deg_rad_list = [
@@ -60,6 +80,6 @@ if get_deg_rad == "degrees":
     print(rad_value)
 
 else:
-    angle_value = float(input("How much "))
-    deg_value = np.degrees(angle_value)
+    angle_value = (input("How much "))
+    deg_value = np.deg2rad(angle_value)
     print(deg_value)
