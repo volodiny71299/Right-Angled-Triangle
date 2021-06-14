@@ -12,6 +12,7 @@ def trigonometry(angle, side_length, side_respective_to_angle, unknown):
         [math.sin, None, math.cos],
         [math.tan, math.cos, None]
     ]
+
     index1 = sohcahtoa[0].index(side_respective_to_angle)
     index2 = sohcahtoa[0].index(unknown)
     function = sohcahtoa[index1 + 1][index2]
@@ -23,6 +24,6 @@ angle = 30
 side_length = 8
 side_respective_to_angle = 9
 unknown = ""
-trigonometry(30, 2, 'hypotenuse', 'opposite')
+answer = trigonometry(30, 2, 'hypotenuse', 'opposite')
 
-print(trigonometry)
+print(answer)
