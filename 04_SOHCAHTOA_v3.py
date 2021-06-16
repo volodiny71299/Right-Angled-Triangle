@@ -67,7 +67,7 @@ def trig(angle, side, known, unknown):
             return side * math.sin(angle)
         elif unknown == 'adj':
             return side * math.cos(angle)
-
+            
     elif known == 'opp':
         if unknown == 'hyp':
             return side / math.sin(angle)
@@ -81,6 +81,58 @@ def trig(angle, side, known, unknown):
             return side * math.tan(angle)
 
 
+# function which calculates angle if has two knwon sides
+def inverse(side_a, side_b, length_a, length_b):
 
-def inverse(side_a, side_b):
+    # finds ratio using opp and adj and uses that with inverse tan to find the angle
+    if side_a == 'opp':
+        if side_b == 'adj':
+            ratio = length_a/length_b
+            angle = math.atan(ratio)
+            angle = math.degrees(angle)
+            return angle
+
+        elif  side_b == 'hyp':
+            ratio = length_a/length_b
+            angle = math.asin(ratio)
+            angle = math.degrees(angle)
+            return angle
+
+
+    elif side_a == 'adj':
+        if side_b == 'opp':
+            ratio = length_b/length_a
+            angle = math.asin(ratio)
+            angle = math.degrees(angle)
+            return angle
+
+        elif side_b == 'hyp':
+            ratio = length_a/length_b
+            angle = math.acos(ratio)
+            angle = math.degrees(angle)
+            return angle
+
     
+    elif side_a == 'hyp':
+        if side_b == 'opp':
+            ratio = length_b/length_a
+            angle = math.asin(ratio)
+            angle = math.degrees(angle)
+            return angle
+        
+        elif side_b == 'adj':
+            ratio = length_b/length_a
+            angle = math.acos(ratio)
+            angle = math.degrees(angle)
+            return angle
+
+
+side_a = input("Side A: ")
+length_a = int(input("Length of A: "))
+
+side_b = input("Side B: ")
+length_b = int(input("Length of B: "))
+
+
+answer = inverse(side_a, side_b, length_a, length_b)
+print(answer)
