@@ -55,7 +55,7 @@ import math
 # cos(T) = adj / hyp
 # tan(T) = opp / adj
 
-def trig(angle, side_length, side_name, unknown):
+def trig(angle, side_name, side_length, unknown):
     angle = math.radians(angle)
     # Unknown poss:
         # hyp
@@ -130,12 +130,51 @@ def inverse(side_a, side_b, length_a, length_b):
             return angle
 
 
-side_a = input("Side A: ")
-length_a = int(input("Length of A: "))
+# side_a = input("Side A: ")
+# length_a = int(input("Length of A: "))
 
-side_b = input("Side B: ")
-length_b = int(input("Length of B: "))
+# side_b = input("Side B: ")
+# length_b = int(input("Length of B: "))
 
 
-answer = inverse(side_a, side_b, length_a, length_b)
-print(answer)
+# answer = inverse(side_a, side_b, length_a, length_b)
+# print(answer)
+
+test_data_inverse = [
+    [3, "opp", 4, "adj"],
+    [4, "adj", 5, "hyp"],
+    [3, "opp", 5, "hyp"]
+]
+
+for item in test_data_inverse:
+    side_a = item[1]
+    length_a = item[0]
+    side_b = item[3]
+    length_b = item[2]
+
+    answer = inverse(side_a, side_b, length_a, length_b)
+    print()
+    print(item, answer)
+    print()
+
+
+test_data_normal = [
+    [36.86989764584402, 'adj', 4, 'hyp'],
+    [36.86989764584402, 'adj', 4, 'opp'],
+    [36.86989764584402, 'hyp', 5, 'adj'],
+    [36.86989764584402, 'hyp', 5, 'opp'],
+    [36.86989764584402, 'opp', 3, 'adj'],
+    [36.86989764584402, 'opp', 3, 'hyp']
+]
+
+for item in test_data_normal:
+    angle = item[0]
+    side_name = item[1]
+    side_length = item[2]
+    unknown = item[3]
+
+    length = trig(angle, side_name, side_length, unknown)
+
+    print()
+    print(item, length)
+    print()
