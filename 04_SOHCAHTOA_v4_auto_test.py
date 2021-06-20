@@ -62,21 +62,36 @@ def trig(angle, side_name, side_length, unknown):
         # opp
         # adj
     
+    # calculates the side length when the known side of the triangle is hypotenuse
     if side_name == 'hyp':
+
+        # calculates the length when opposite is unknown
         if unknown == 'opp':
             return side_length * math.sin(angle)
+
+        # calculates the length when adjacent is unknown
         elif unknown == 'adj':
             return side_length * math.cos(angle)
-            
+    
+    # calculates the side length when the known side of the triangle is opposite
     elif side_name == 'opp':
+
+        # calculates the length when hypotenuse is unknown
         if unknown == 'hyp':
             return side_length / math.sin(angle)
+
+        # calculates the length when adjacent is unknown
         elif unknown == 'adj':
             return side_length / math.tan(angle)
 
+    # calculates the side length when the known side of the triangle is adjacent
     elif side_name == 'adj':
+
+        # calculates the length when hypotenuse is unknown
         if unknown == 'hyp':
             return side_length / math.cos(angle)
+            
+        # calculates the length when opposite is unknown
         elif unknown == 'opp':
             return side_length * math.tan(angle)
 
@@ -86,29 +101,41 @@ def inverse(side_a, side_b, length_a, length_b):
 
     # finds ratio using opp and adj and uses that with inverse tan to find the angle
     # main side is opposite (then calculates angle based on the second chosen side with ratio)
+    
+    # when first side is opposite
     if side_a == 'opp':
+
+        # when the second side is adjacent
         if side_b == 'adj':
+            # calculates the ratio based on the two known side lengths
             ratio = length_a/length_b
             angle = math.atan(ratio)
             angle = math.degrees(angle)
             return angle
 
-        elif  side_b == 'hyp':
+        # when the second side is hypotenuse
+        elif side_b == 'hyp':
+            # calculates the ratio based on the two known side lengths
             ratio = length_a/length_b
             angle = math.asin(ratio)
             angle = math.degrees(angle)
             return angle
 
-
-    # main side is adjacent (then calculates angle based on the second chosen side with ratio)
+    # main side is adjacent (then calculates angle based
+    # on the second chosen side with ratio)
     elif side_a == 'adj':
+
+        # when the second side is opposite
         if side_b == 'opp':
+            # calculates the ratio based on the two known side lengths
             ratio = length_b/length_a
             angle = math.asin(ratio)
             angle = math.degrees(angle)
             return angle
 
+        # when the second side is hypotenuse
         elif side_b == 'hyp':
+            # calculates the ratio based on the two known side lengths
             ratio = length_a/length_b
             angle = math.acos(ratio)
             angle = math.degrees(angle)
@@ -117,28 +144,23 @@ def inverse(side_a, side_b, length_a, length_b):
 
     # main side is hypotenuse (then calculates angle based on the second chosen side with ratio)
     elif side_a == 'hyp':
+
+        # when the second side is opposite
         if side_b == 'opp':
+            # calculates the ratio based on the two known side lengths
             ratio = length_b/length_a
             angle = math.asin(ratio)
             angle = math.degrees(angle)
             return angle
         
+        # when the second side is adjacent
         elif side_b == 'adj':
+            # calculates the ratio based on the two known side lengths
             ratio = length_b/length_a
             angle = math.acos(ratio)
             angle = math.degrees(angle)
             return angle
 
-
-# side_a = input("Side A: ")
-# length_a = int(input("Length of A: "))
-
-# side_b = input("Side B: ")
-# length_b = int(input("Length of B: "))
-
-
-# answer = inverse(side_a, side_b, length_a, length_b)
-# print(answer)
 
 test_data_inverse = [
     [3, "opp", 4, "adj"],
@@ -147,10 +169,10 @@ test_data_inverse = [
 ]
 
 for item in test_data_inverse:
-    side_a = item[1]
     length_a = item[0]
-    side_b = item[3]
+    side_a = item[1]
     length_b = item[2]
+    side_b = item[3]
 
     answer = inverse(side_a, side_b, length_a, length_b)
     print()
