@@ -36,7 +36,7 @@ def string_check(choice, options):
     if is_valid == "yes":
         return chosen
     else:
-        return "invalid choice"
+        return "invalid input"
 
 
 # number checker with custom error messages and max and min limits
@@ -163,10 +163,6 @@ def trig_inverse(side_a, side_b, length_a, length_b):
             return angle
 
 
-
-
-
-
 # Asks user for the known side (hyp, adj, opp)
 def get_known():
 
@@ -177,19 +173,19 @@ def get_known():
         ]
 
     side_a = ""
-    while side_a != "invalid choice":
+    while side_a != "invalid input":
         side_a = input("Known side: ")
         side_a_valid = string_check(side_a, valid_sides)
 
-        if side_a_valid == "invalid choice":
+        if side_a_valid == "invalid input":
             print("Error, please try again")
 
-        elif side_a_valid != "invalid choice":
+        elif side_a_valid != "invalid input":
             return side_a_valid
 
 
 # Function which asks the user what the unknown side is (doesn't let the known side be repeated)
-def get_unknown(known):
+def get_unknown(known, question):
     
     valid_sides = [
             ["hyp", "hypotenuse", "hyp", "h"],
@@ -198,17 +194,48 @@ def get_unknown(known):
         ]
 
     unknown = ""
-    while unknown != "invalid choice":
-        unknown = input("Unknown side: ")
+    while unknown != "invalid input":
+        unknown = input()
         unknown_valid = string_check(unknown, valid_sides)
 
         if unknown_valid == known:
             print("Please choose a different side")
 
-        elif unknown_valid != "invalid choice":
+        elif unknown_valid != "invalid input":
             return unknown_valid
 
         else:
             print("Error, please try again")
 
 
+yes_no = [
+    ["yes", "y"],
+    ["no", "n"]
+]
+
+# *** main routine ***
+
+# method -->
+# 1) Ask for known values
+side_a = get_known()
+length_a = num_check("Length A: ", "Error", 0, float('inf'), float)
+
+side_b = ""
+while side_b != "invalid input":
+    side_b = input("Is side B known? ").lower()
+    valid_b = string_check(side_b, yes_no)
+    
+    if valid_b == "invalid input":
+        print("Reply with 'yes' or 'no'")
+
+    else:
+        break
+
+if valid_b == "No":
+    get_angle = num_check("Angle: ", "Error", 1, 89, float)
+    
+elif valid_b == "Yes":
+    side_b = get_unknown(side_a)
+
+
+print(valid_b)
