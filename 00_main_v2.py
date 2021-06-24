@@ -174,7 +174,7 @@ def get_known():
 
     side_a = ""
     while side_a != "invalid input":
-        side_a = input("Known side: ")
+        side_a = input("Side A: ")
         side_a_valid = string_check(side_a, valid_sides)
 
         if side_a_valid == "invalid input":
@@ -184,18 +184,21 @@ def get_known():
             return side_a_valid
 
 
-# Function which asks the user what the unknown side is (doesn't let the known side be repeated)
-def get_unknown(known, question):
-    
+# gets the user to type in the second side,
+def second_side(known):
     valid_sides = [
-            ["hyp", "hypotenuse", "hyp", "h"],
-            ["opp", "opposite", "opp", "o"],
-            ["adj", "adjacent", "adj", "a"]
-        ]
+        ["hyp", "hypotenuse", "hyp", "h"],
+        ["opp", "opposite", "opp", "o"],
+        ["adj", "adjacent", "adj", "a"],
+        ["unknown", "unk", "u"]
+    ]
 
     unknown = ""
-    while unknown != "invalid input":
-        unknown = input()
+    while unknown != "invalid choice":
+
+        default = "unknown"
+
+        unknown = input(" -Side B-\nIf unknown, keep blank\nB: ")
         unknown_valid = string_check(unknown, valid_sides)
 
         if unknown_valid == known:
@@ -204,14 +207,12 @@ def get_unknown(known, question):
         elif unknown_valid != "invalid input":
             return unknown_valid
 
+        elif unknown_valid == "":
+            return default
+
         else:
             print("Error, please try again")
 
-
-yes_no = [
-    ["yes", "y"],
-    ["no", "n"]
-]
 
 # *** main routine ***
 
@@ -220,22 +221,10 @@ yes_no = [
 side_a = get_known()
 length_a = num_check("Length A: ", "Error", 0, float('inf'), float)
 
-side_b = ""
-while side_b != "invalid input":
-    side_b = input("Is side B known? ").lower()
-    valid_b = string_check(side_b, yes_no)
-    
-    if valid_b == "invalid input":
-        print("Reply with 'yes' or 'no'")
 
-    else:
-        break
+side_b = second_side(side_a)
 
-if valid_b == "No":
-    get_angle = num_check("Angle: ", "Error", 1, 89, float)
-    
-elif valid_b == "Yes":
-    side_b = get_unknown(side_a)
+print("A: {} {}".format(side_a, length_a))
+print("B: {}".format(side_b))
 
-
-print(valid_b)
+# if side_b == "Unknown":
