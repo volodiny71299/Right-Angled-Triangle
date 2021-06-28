@@ -24,7 +24,7 @@ def string_check(choice, options):
         if choice in var_list:
 
             # get full name of snack and put it in title case so it looks nice when outputted
-            chosen = var_list[0].title()
+            chosen = var_list[0]
             is_valid = "yes"
             break
 
@@ -164,7 +164,7 @@ def trig_inverse(side_a, side_b, length_a, length_b):
 
 
 # Asks user for the known side (hyp, adj, opp)
-def get_known():
+def get_side(question):
 
     valid_sides = [
             ["hyp", "hypotenuse", "hyp", "h"],
@@ -174,18 +174,19 @@ def get_known():
 
     side_a = ""
     while side_a != "invalid input":
-        side_a = input("Side A: ")
+        side_a = input(question).lower()
         side_a_valid = string_check(side_a, valid_sides)
 
         if side_a_valid == "invalid input":
-            print("Error, please try again")
+            print("Error, please try again\nValid options are -", ', '.join(Extract(valid_sides)))
 
         elif side_a_valid != "invalid input":
             return side_a_valid
 
 
 # gets the user to type in the second side,
-def second_side(known):
+def second_side(question, known):
+
     valid_sides = [
         ["hyp", "hypotenuse", "hyp", "h"],
         ["opp", "opposite", "opp", "o"],
@@ -194,20 +195,20 @@ def second_side(known):
     ]
 
     unknown = ""
-    while unknown != "invalid choice":
+    while unknown != "invalid input":
 
         default = "unknown"
 
-        unknown = input(" -Side B-\nIf unknown, keep blank\nB: ")
+        unknown = input(question)
         unknown_valid = string_check(unknown, valid_sides)
 
         if unknown_valid == known:
-            print("Please choose a different side")
+            print("Cannot be same as Side A ({})".format(side_a))
 
         elif unknown_valid != "invalid input":
             return unknown_valid
 
-        elif unknown_valid == "":
+        elif unknown == "":
             return default
 
         else:
@@ -218,13 +219,69 @@ def second_side(known):
 
 # method -->
 # 1) Ask for known values
-side_a = get_known()
-length_a = num_check("Length A: ", "Error", 0, float('inf'), float)
+side_a = get_side("Name of side A: ")
+length_a = num_check("Length of {}: ".format(side_a), "Error, make sure your input is a number above 0", 0, float('inf'), float)
+
+# Ask for side b
+side_b = second_side("What is the name of side B?\n-Keep blank if the length is unknown- ", side_a)
+print(side_b)
+
+# print values for testing
+# print("A: {} {}".format(side_a, length_a))
+# print("B: {}".format(side_b))
+
+# if second side is unknown, calculate the 
+if side_b == "unknown":
+    
+    # list that hold valid options for side b
+    valid_side = [
+            ["hyp", "hypotenuse", "hyp", "h"],
+            ["opp", "opposite", "opp", "o"],
+            ["adj", "adjacent", "adj", "a"]
+        ]
+
+    # start of loop to get side b
+    side_b = ""
+    while side_b != "invalid input":
+
+        # asks for side b in the loop
+        side_b = input("Unknown side ").lower()
+        side_b_unknown = string_check(side_b, valid_side)
+
+        # makes sure side b is not same as side a
+        if side_b_unknown == side_a:
+            print("Can't be the same as A ({})".format(side_a))
+
+        # if side b is a valid option, return it
+        elif side_b_unknown != "invalid input":
+            print(side_b_unknown)
+            break
+
+        # if side b input has invalid input, prints error
+        else:
+            print("Please enter")
 
 
-side_b = second_side(side_a)
+    # get angle value for the trig function to work out length of b
+    angle_value = num_check("Angle: ", "Please enter a valid angle value", 0, float('inf'), float)
 
-print("A: {} {}".format(side_a, length_a))
-print("B: {}".format(side_b))
+    # get the length of side_b 
+    length_b = trig_norm(angle_value, side_a, length_a, side_b_unknown)
+    # prints the length of side b
+    print("Length of side B: {:.3f}".format(length_b))
 
-# if side_b == "Unknown":
+
+# if length of side b is known, get the length of b and calculate the angle
+else:
+
+    if side_a == "hyp":
+        length_b = num_check("Length B: ", "Make sure your input is a number between 0 and {}".format(length_a), 0, length_a, float)
+
+    else:
+        length_b = num_check("Length B: ", "Error, make sure your input is a number above 0", 0, float('inf'), float)
+
+    angle = trig_inverse(side_a, side_b, length_a, length_b)
+
+    print("Value of desired angle: {:.3f}".format(angle))
+
+print()
