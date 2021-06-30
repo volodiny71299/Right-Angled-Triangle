@@ -230,6 +230,11 @@ side_b = second_side("\nName of side B?\n-Keep blank if the length is unknown- "
 # if second side is unknown, ask user what side it is, so it can calculate it
 if side_b == "unknown":
     
+    print()
+
+    # get angle value for the trig function to work out length of b
+    angle_value = num_check("Angle: ", "Please enter a valid angle value", 0, float('inf'), float)
+
     # list that hold valid options for side b
     valid_side = [
             ["hypotenuse", "hyp", "h"],
@@ -244,7 +249,7 @@ if side_b == "unknown":
         print()
 
         # asks for side b in the loop
-        side_b = input("Name of unknown side: ").lower()
+        side_b = input("(corresponding to your angle position)\nWhat is the unknown side: ").lower()
         side_b_unknown = string_check(side_b, valid_side)
 
         # makes sure side b is not same as side a
@@ -253,35 +258,38 @@ if side_b == "unknown":
 
         # if side b is a valid option, return it
         elif side_b_unknown != "invalid input":
-            print(side_b_unknown)
+            print("Unknown side: {}".format(side_b_unknown))
             break
 
         # if side b input has invalid input, prints error
         else:
             print("Please enter")
 
-
-    # get angle value for the trig function to work out length of b
-    angle_value = num_check("Angle: ", "Please enter a valid angle value", 0, float('inf'), float)
+    print()
 
     # get the length of side_b 
     length_b = trig_norm(angle_value, side_a, length_a, side_b_unknown)
+    
+    print()
+
     # prints the length of side b
-    print("Length of side B: {:.3f}".format(length_b))
+    print("Length of unknown: {:.3f}".format(length_b))
 
 
 # if length of side b is known, get the length of b and calculate the angle
 else:
 
-    if side_a == "hyp":
-        length_b = num_check("Length B: ", "Make sure your input is a number between 0 and {}".format(length_a), 0, length_a, float)
+    # if Side A is hypotenuse, add maximum value to the length (cannot exceed length of side A)
+    if side_a == "hypotenuse":
+        length_b = num_check("Length of {}: ".format(side_b), "Make sure your input is a number between 0 and {}".format(length_a), 0, length_a, float)
 
+    # if side A isn't hypotenuse, don't limit the maximum value
     else:
-        length_b = num_check("Length B: ", "Error, make sure your input is a number above 0", 0, float('inf'), float)
+        length_b = num_check("Length of {}: ".format(side_b), "Error, make sure your input is a number above 0", 0, float('inf'), float)
 
     angle = trig_inverse(side_a, side_b, length_a, length_b)
 
-    print("Value of desired angle: {:.3f}".format(angle))
+    print("Value of desired angle: {:.3f}°".format(angle))
 
 print()
 print()
