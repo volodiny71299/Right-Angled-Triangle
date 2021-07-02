@@ -223,9 +223,7 @@ side_a = get_side("Name of side A: ")
 length_a = num_check("Length of {}: ".format(side_a), "Error, make sure your input is a number above 0\n", 0, float('inf'), float)
 
 # Ask for side b
-side_b = second_side("\nName of side B?\n-Keep blank if the length is unknown- ", side_a)
-
-
+side_b = second_side("\n-Keep blank if the length is unknown-\nName of side B: ", side_a)
 
 # if second side is unknown, ask user what side it is, so it can calculate it
 if side_b == "unknown":
@@ -233,7 +231,7 @@ if side_b == "unknown":
     print()
 
     # get angle value for the trig function to work out length of b
-    angle_value = num_check("Angle: ", "Please enter a valid angle value", 0, float('inf'), float)
+    angle_value = num_check("Angle value: ", "Please enter a valid angle value", 0, float('inf'), float)
 
     # list that hold valid options for side b
     valid_side = [
@@ -264,8 +262,6 @@ if side_b == "unknown":
         # if side b input has invalid input, prints error
         else:
             print("Please enter")
-
-    print()
 
     # get the length of side_b 
     length_b = trig_norm(angle_value, side_a, length_a, side_b_unknown)
