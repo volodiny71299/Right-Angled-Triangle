@@ -1,6 +1,6 @@
 import pandas
 
-name_lengths = 'Length'
+name_lengths = 'one', 'two', 'three', 'four'
 
 hypotenuse = []
 opposite = []
@@ -9,7 +9,7 @@ adjacent = []
 sides_list = [hypotenuse, opposite, adjacent]
 
 triangle_side_dict = {
-    'Side': name_lengths,
+    'Triangle': name_lengths,
     'Hypotenuse': hypotenuse,
     'Opposite': opposite,
     'Adjacent': adjacent,
@@ -47,5 +47,5 @@ print("Adjacent lengths: ", sides_list[2])
 print()
 
 traingle_frame = pandas.DataFrame(triangle_side_dict)
-traingle_frame = traingle_frame.set_index('Side')
+traingle_frame = traingle_frame.set_index('Triangle')
 print(traingle_frame)
