@@ -7,6 +7,7 @@
 # import libraries
 import math
 from numpy.lib import stride_tricks
+from numpy.lib.function_base import append
 import pandas
 # Functions list
 
@@ -265,6 +266,23 @@ def third_calc(side_a, length_a, side_b, length_b):
             return side_c and side_c_length
 
 
+# appends side name+length to a list
+def append_input(side, length):
+    
+    if side == 'hypotenuse':
+        hypotenuse.append(side)
+        hypotenuse.append(length)
+
+    elif side == 'opposite':
+        opposite.append(side)
+        opposite.append(length)
+
+    else:
+        adjacent.append(side)
+        adjacent.append(length)
+    
+
+
 # *** Dictionaries and lists ***
 
 triangle_num = []
@@ -292,6 +310,8 @@ triangle_side_dict = {
 side_a = get_side("Name of side A: ")
 length_a = num_check("Length of {}: ".format(side_a), "Error, make sure your input is a number above 0\n", 0, float('inf'), float)
 
+# appending "Side A" and "Length A"
+append_input(side_a, length_a)
 
 # Ask for side b
 side_b = second_side("\n-Keep blank if the length is unknown-\nName of side B: ", side_a)
@@ -342,6 +362,8 @@ if side_b == "unknown":
     # prints the length of side b
     print("Length of {}: {:.3f}".format(side_b, length_b))
 
+    # append input of Side+Length B
+    append_input(side_b, length_b)
 
 # if length of side b is known, get the length of b and calculate the angle
 else:
@@ -362,12 +384,15 @@ print()
 print()
 
 # print all results + calculate missing side and angle
-side_c = third_calc(side_a, length_a, side_b, length_b)
+third_side = third_calc(side_a, length_a, side_b, length_b)
+side_c = third_side[0]
+length_c = third_side[1]
+
+append_input(side_c, length_c)
 
 angle_second = 90 - angle_value
 
-print([side_a, length_a])
-print([side_b, length_b])
-print(side_c)
+
+print(angle_value, "", angle_second)
 print()
-print(angle_value, angle_second)
+print(sides_list)
