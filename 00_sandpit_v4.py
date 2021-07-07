@@ -1,6 +1,6 @@
 import pandas
 
-name_lengths = 'one', 'two', 'three', 'four'
+triangle_num = 'one', 'two', 'three', 'four'
 
 hypotenuse = []
 opposite = []
@@ -9,7 +9,7 @@ adjacent = []
 sides_list = [hypotenuse, opposite, adjacent]
 
 triangle_side_dict = {
-    'Triangle': name_lengths,
+    'Triangle': triangle_num,
     'Hypotenuse': hypotenuse,
     'Opposite': opposite,
     'Adjacent': adjacent,

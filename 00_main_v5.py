@@ -270,15 +270,12 @@ def third_calc(side_a, length_a, side_b, length_b):
 def append_input(side, length):
     
     if side == 'hypotenuse':
-        hypotenuse.append(side)
         hypotenuse.append(length)
 
     elif side == 'opposite':
-        opposite.append(side)
         opposite.append(length)
 
     else:
-        adjacent.append(side)
         adjacent.append(length)
     
 
@@ -398,11 +395,12 @@ else:
     append_input(side_c, length_c)
 
     
-
+print("***")
 print("\nHypotenuse: ", hypotenuse)
 print("\nOpposite", opposite)
 print("\nAdjacent", adjacent)
-
+print("***")
+print()
 traingle_frame = pandas.DataFrame(triangle_side_dict)
 # traingle_frame = traingle_frame.set_index('Triangle')
 print(traingle_frame)
