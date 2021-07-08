@@ -1,4 +1,5 @@
-# main code v5
+# main code v6
+# Put the whole code in a loop until exit code is given
 # Sources for codes ->
 # Extract function - https://www.geeksforgeeks.org/python-get-first-element-of-each-sublist/
 # List with no brackets (print) - https://stackoverflow.com/questions/11178061/print-list-without-brackets-in-a-single-row
@@ -304,74 +305,78 @@ triangle_side_dict = {
 
 # *** main routine ***
 
-# method -->
-# 1) Ask for known values
-side_a = get_side("Name of side A: ")
+carry_on = ""
+while carry_on == "":
 
-length_a = num_check("Length of {}: ".format(side_a), "Error, make sure your input is a number above 0\n", 0, float('inf'), float)
+    # Ask for known values
+    side_a = get_side("Name of side A: ")
 
-# appending "Side A" and "Length A"
-append_input(side_a, length_a)
+    length_a = num_check("Length of {}: ".format(side_a), "Error, make sure your input is a number above 0\n", 0, float('inf'), float)
 
-# Ask for side b
-side_b = second_side("\n-Keep blank if the length is unknown-\nName of side B: ", side_a)
+    # appending "Side A" and "Length A"
+    append_input(side_a, length_a)
 
-# if second side is unknown, ask user what side it is, so it can calculate it
-if side_b == "unknown":
-    
-    print()
+    # Ask for side b
+    side_b = second_side("\n-Keep blank if the length is unknown-\nName of side B: ", side_a)
 
-    # get angle value for the trig function to work out length of b
-    angle_value = num_check("Angle value: ", "Please enter a valid angle value", 0, float('inf'), float)
-
-    # list that hold valid options for side b
-    valid_side = [
-            ["hypotenuse", "hyp", "h"],
-            ["opposite", "opp", "o"],
-            ["adjacent", "adj", "a"]
-        ]
-
-    # start of loop to get side b
-    side_b_unknown = ""
-    while side_b_unknown != "invalid input":
-
+    # if second side is unknown, ask user what side it is, so it can calculate it
+    if side_b == "unknown":
+        
         print()
 
-        # asks for side b in the loop
-        side_b_unknown = input("(corresponding to your angle position)\nWhat is the unknown side: ").lower()
-        side_b = string_check(side_b_unknown, valid_side)
+        # get angle value for the trig function to work out length of b
+        angle_value = num_check("Angle value: ", "Please enter a valid angle value", 0, float('inf'), float)
 
-        # makes sure side b is not same as side a
-        if side_b == side_a:
-            print("Cannot be the same as A ({})".format(side_a))
+        # list that hold valid options for side b
+        valid_side = [
+                ["hypotenuse", "hyp", "h"],
+                ["opposite", "opp", "o"],
+                ["adjacent", "adj", "a"]
+            ]
 
-        # if side b is a valid option, return it
-        elif side_b != "invalid input":
-            print("Unknown side: {}".format(side_b))
-            break
+        # start of loop to get side b
+        side_b_unknown = ""
+        while side_b_unknown != "invalid input":
 
-        # if side b input has invalid input, prints error
-        else:
-            print("Please enter a valid option")
+            print()
 
-    # get the length of side_b 
-    length_b = trig_norm(angle_value, side_a, length_a, side_b)
+            # asks for side b in the loop
+            side_b_unknown = input("(corresponding to your angle position)\nWhat is the unknown side: ").lower()
+            side_b = string_check(side_b_unknown, valid_side)
 
-    # prints the length of side b
-    print("Length of {}: {}".format(side_b, length_b))
+            # makes sure side b is not same as side a
+            if side_b == side_a:
+                print("Cannot be the same as A ({})".format(side_a))
+
+            # if side b is a valid option, return it
+            elif side_b != "invalid input":
+                print("Unknown side: {}".format(side_b))
+                break
+
+            # if side b input has invalid input, prints error
+            else:
+                print("Please enter a valid option")
+
+        # get the length of side_b 
+        length_b = trig_norm(angle_value, side_a, length_a, side_b)
+
+        # prints the length of side b
+        print("Length of {}: {}".format(side_b, length_b))
 
 
-    # append input of Side+Length B
-    append_input(side_b, length_b)
+        # append input of Side+Length B
+        append_input(side_b, length_b)
 
-    # Calculate name and length of side C
-    third_side = third_calc(side_a, length_a, side_b, length_b)
-    side_c = third_side[0]
-    length_c = third_side[1]
+        # Calculate name and length of side C
+        third_side = third_calc(side_a, length_a, side_b, length_b)
+        side_c = third_side[0]
+        length_c = third_side[1]
 
-    # append the length of side c to the wanted list
-    append_input(side_c, length_c)
+        # append the length of side c to the wanted list
+        append_input(side_c, length_c)
 
+        
+    carry_on = input("Enter to quit or anything else to continue")
 
 # if length of side b is known, get the length of b and calculate the angle
 else:
@@ -400,6 +405,7 @@ else:
     # append the length of C to the wanted list
     append_input(side_c, length_c)
 
+    carry_on = input("Enter to quit or anything else to continue")
 
 print()
 triangle_frame = pandas.DataFrame(triangle_side_dict)

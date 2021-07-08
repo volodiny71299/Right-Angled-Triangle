@@ -19,13 +19,14 @@ for item in range(0, 3):
 
     if which_side == "hyp":
         hyp = input("Hypotenuse: ")
+        
+    elif which_side == "opp":
+        opp = input("Opposite: ")
+        temp_opp.append(opp)
+    else:
+        adj = input("Adjacent: ")
+        temp_opp.append(opp)
 
-    opp = input("Opposite: ")
-    adj = input("Adjacent: ")
-
-    temp_hyp.append(hyp)
-    temp_opp.append(opp)
-    temp_adj.append(adj)
 
     row = [temp_hyp, temp_opp, temp_adj]
 
