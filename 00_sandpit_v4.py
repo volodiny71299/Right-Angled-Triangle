@@ -1,5 +1,21 @@
 import pandas
 
+
+def num_check(question, error, low, high, num_type):
+    valid = False
+    while not valid:
+        try:
+            response = num_type(input(question))
+
+            if low < response < high:
+                return response
+            else:
+                print(error)
+
+        except ValueError:
+            print(error)
+
+
 # triangle_num = 'one', 'two', 'three', 'four'
 
 hypotenuse = []
@@ -16,10 +32,10 @@ triangle_side_dict = {
 }
 
 test_data = [
-    [['Hypotenuse', 5], ['Opposite', 3], ['Adjacent', 4]],
-    [['Hypotenuse', 10], ['Opposite', 6], ['Adjacent', 8]],
-    [['Hypotenuse', 50], ['Opposite', 30], ['Adjacent', 40]],
-    [['Hypotenuse', 2.5], ['Opposite', 1.5], ['Adjacent', 2]]
+    [['Hypotenuse', 4.76021], ['Opposite', 2.4186], ['Adjacent', 4.1]],
+    [['Hypotenuse', 3.71137], ['Opposite', 3.14], ['Adjacent', 1.97855]],
+    [['Hypotenuse', 14.15097], ['Opposite', 12], ['Adjacent', 7.5]],
+    [['Hypotenuse', 10.19804], ['Opposite', 2], ['Adjacent', 10]]
 ]
 
 count = 0
@@ -39,13 +55,11 @@ for all_sides in test_data:
             add_list = triangle_side_dict[to_find]
             add_list[-1] = amount
 
-print()
-print("Side lengths: ", sides_list)
-print("Hypotenuse lengths: ", sides_list[0])
-print("Opposite lengths: ", sides_list[1])
-print("Adjacent lengths: ", sides_list[2])
-print()
 
-traingle_frame = pandas.DataFrame(triangle_side_dict)
-# traingle_frame = traingle_frame.set_index('Triangle')
-print(traingle_frame)
+triangle_frame = pandas.DataFrame(triangle_side_dict)
+
+round_to = num_check("How many decimal places? ", "Please enter a number between 1 and 5\n", 0, 6, int)
+
+triangle_frame = triangle_frame.round(round_to)
+
+print(triangle_frame)

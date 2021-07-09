@@ -10,7 +10,7 @@ import math
 import numpy as np
 import pandas
 
-np.random.seed(25)
+# np.random.seed(25)
 
 # Functions list
 
@@ -305,6 +305,13 @@ triangle_side_dict = {
 
 # *** main routine ***
 
+# getting instructions
+yes_no = [
+    ["yes", "y"],
+    ["no", "n"]
+]
+
+
 carry_on = ""
 while carry_on == "":
 
@@ -317,7 +324,7 @@ while carry_on == "":
     append_input(side_a, length_a)
 
     # Ask for side b
-    side_b = second_side("\n-Keep blank if the length is unknown-\nName of side B: ", side_a)
+    side_b = second_side("\n-Keep blank if the angle is known-\nName of side B: ", side_a)
 
     # if second side is unknown, ask user what side it is, so it can calculate it
     if side_b == "unknown":
@@ -376,36 +383,36 @@ while carry_on == "":
         append_input(side_c, length_c)
 
         
-    carry_on = input("Enter to quit or anything else to continue")
+        carry_on = input("Press <ENTER> to continue or anyhting else to quit")
 
-# if length of side b is known, get the length of b and calculate the angle
-else:
-
-    # if Side A is hypotenuse, add maximum value to the length (cannot exceed length of side A)
-    if side_a == "hypotenuse":
-        length_b = num_check("Length of {}: ".format(side_b), "Make sure your input is a number between 0 and {}".format(length_a), 0, length_a, float)
-
-    # if side A isn't hypotenuse, don't limit the maximum value
+    # if length of side b is known, get the length of b and calculate the angle
     else:
-        length_b = num_check("Length of {}: ".format(side_b), "Error, make sure your input is a number above 0", 0, float('inf'), float)
 
-    angle_value = trig_inverse(side_a, side_b, length_a, length_b)
+        # if Side A is hypotenuse, add maximum value to the length (cannot exceed length of side A)
+        if side_a == "hypotenuse":
+            length_b = num_check("Length of {}: ".format(side_b), "Make sure your input is a number between 0 and {}".format(length_a), 0, length_a, float)
 
-    # print the angle
-    print("\nValue of angle: {:.3f}°".format(angle_value))
+        # if side A isn't hypotenuse, don't limit the maximum value
+        else:
+            length_b = num_check("Length of {}: ".format(side_b), "Error, make sure your input is a number above 0", 0, float('inf'), float)
 
-    # append side b name and length
-    append_input(side_b, length_b)
+        angle_value = trig_inverse(side_a, side_b, length_a, length_b)
 
-    # calculate the name and length of side C
-    third_side = third_calc(side_a, length_a, side_b, length_b)
-    side_c = third_side[0]
-    length_c = third_side[1]
+        # print the angle
+        print("\nValue of angle: {:.3f}°".format(angle_value))
 
-    # append the length of C to the wanted list
-    append_input(side_c, length_c)
+        # append side b name and length
+        append_input(side_b, length_b)
 
-    carry_on = input("Enter to quit or anything else to continue")
+        # calculate the name and length of side C
+        third_side = third_calc(side_a, length_a, side_b, length_b)
+        side_c = third_side[0]
+        length_c = third_side[1]
+
+        # append the length of C to the wanted list
+        append_input(side_c, length_c)
+
+        carry_on = input("Press <ENTER> to continue or anyhting else to quit")
 
 print()
 triangle_frame = pandas.DataFrame(triangle_side_dict)
