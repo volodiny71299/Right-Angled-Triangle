@@ -36,6 +36,7 @@ yes_no = [
     ["no", "n"]
 ]
 
+
 instructions_list = "\n***WELCOME***\nThis program helps the user work out values of a right angled triangle!\nYou will be asked to enter known information about the triangle in order for the program to calculate unknown values of triangles.\nAll the program needs is ->\n1) Side name [Hypotenuse, Adjacent, Opposite] (corresponding to the angle) and its length PLUS the known angle\n2) Two different sied names [Hypotenuse, Adjacent, Opposite] and their lengths (adjacent/opposite cannot be longer than hypotenuse)\n"
 
 instructions = ""
@@ -45,7 +46,7 @@ while instructions != "invalid input":
 
     print_instructions = string_check(instructions, yes_no)
     if print_instructions == "yes":
-        print(instructions_list)
+        print("[Instructions]")
         break
 
     elif print_instructions == "no":
