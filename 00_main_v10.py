@@ -194,8 +194,7 @@ def second_side(question, known):
     valid_sides = [
         ["hypotenuse", "hyp", "h"],
         ["opposite", "opp", "o"],
-        ["adjacent", "adj", "a"],
-        ["unknown", "unk", "u"]
+        ["adjacent", "adj", "a"]
     ]
 
     unknown = ""
@@ -207,13 +206,10 @@ def second_side(question, known):
         unknown_valid = string_check(unknown, valid_sides)
 
         if unknown_valid == known:
-            print("Cannot be same as Side A ({})".format(side_a))
+            print("Cannot be same as the first side({})".format(side_a))
 
         elif unknown_valid != "invalid input":
             return unknown_valid
-
-        elif unknown == "":
-            return default
 
         else:
             print("Error, please try again")
@@ -279,7 +275,6 @@ def append_input(side, length):
 
     else:
         adjacent.append(length)
-    
 
 
 # *** Dictionaries and lists ***
@@ -316,12 +311,19 @@ yes_no = [
     ["no", "n"]
 ]
 
+instructions_list = ""
 
+instructions = "*** WELCOME ***\n" \
+               "This program helps the user work out values of a right angled triangle!\n" \
+               "You will be asked to enter information about the triangle in order for the program to calculate values of the triangle.\n" \
+               "1) Enter a known side value\n" \
+               "2) Enter the length of that known value\n" \
+               "3) You will be asked if you know the second side value\n" \
+               "\t- If yes, you will be asked to enter the name and the value of the side\n" \
+               "\t- If no, you will be asked to enter an angle value (between 0 and 90)\n" \
+               "4) You will be asked to loop the program or print the results\n" \
+               "Good luck!\n"
 
-instructions_list = "\n***WELCOME***\nThis program helps the user work out values of a right angled triangle!\nYou will be asked to enter known information about the triangle in order for the program to calculate unknown values of triangles.\nAll the program needs is ->\n1) Side name [Hypotenuse, Adjacent, Opposite] (corresponding to the angle) and its length PLUS the known angle\n2) Two different side names [Hypotenuse, Adjacent, Opposite] and their lengths (adjacent/opposite cannot be longer than hypotenuse)\n\nAt the end you will be asked to round your answers to the nearest decimal place\nAll the triangle values will be printed in a list"
-
-
-instructions = ""
 while instructions != "invalid input":
 
     instructions = input("Do you want to see the instructions? [Yes/No] ").lower()
@@ -356,21 +358,18 @@ while carry_on == "":
     # Ask for known values of for the first side
     side_a = get_side("Known side (hypotenuse, opposite, adjacent): ")
 
-    #
+    # get length of the first known side
     length_a = num_check("Length of {}: ".format(side_a), "Error, make sure your input is a number above 0\n", 0, float('inf'), float)
 
     # appending the first side + length
     append_input(side_a, length_a)
 
     # ask user if they know the second side
-    know_side_b = input("Is another side known? (y/n) ")
+    know_side_b = input("Is another side known? [Yes/No] ")
     know_side_b = string_check(know_side_b, yes_no)
 
-    # Ask for side b
-    side_b = second_side("\n-Keep blank if the angle is known-\nName of side B: ", side_a)
-
     # if second side is unknown, ask user what side it is, so it can calculate it
-    if side_b == "unknown":
+    if know_side_b == "no":
         
         print()
 
@@ -382,37 +381,17 @@ while carry_on == "":
         angle_one.append(angle_value)
         angle_opposite.append(angle_value_two)
 
-        # list that hold valid options for side b
-        valid_side = [
-                ["hypotenuse", "hyp", "h"],
-                ["opposite", "opp", "o"],
-                ["adjacent", "adj", "a"]
-            ]
+        # Hard coded side names for easier calculations based on the first chosen side by the user
+        if side_a == "hypotenuse":
+            side_b = "opposite"
 
-        # start of loop to get side b
-        side_b_unknown = ""
-        while side_b_unknown != "invalid input":
+        elif side_a == "opposite":
+            side_b = "adjacent"
 
-            print()
+        elif side_a == "adjacent":
+            side_b = "hypotenuse"
 
-            # asks for side b in the loop
-            side_b_unknown = input("(corresponding to your angle position)\nWhat is the unknown side: ").lower()
-            side_b = string_check(side_b_unknown, valid_side)
-
-            # makes sure side b is not same as side a
-            if side_b == side_a:
-                print("Cannot be the same as A ({})".format(side_a))
-
-            # if side b is a valid option, return it
-            elif side_b != "invalid input":
-                print("Unknown side: {}".format(side_b))
-                break
-
-            # if side b input has invalid input, prints error
-            else:
-                print("Please enter a valid option")
-
-        # get the length of side_b 
+        # get the length of side_b
         length_b = trig_norm(angle_value, side_a, length_a, side_b)
 
         # append input of Side+Length B
@@ -425,12 +404,14 @@ while carry_on == "":
 
         # append the length of side c to the wanted list
         append_input(side_c, length_c)
-
         
-        carry_on = input("\nPress <ENTER> to continue or anyhting else to print the results\n")
+        carry_on = input("\nPress <ENTER> to continue or anything else to print the results\n")
 
     # if length of side b is known, get the length of b and calculate the angle
     else:
+
+        # Ask for the second side
+        side_b = second_side("Name of second side (hypotenuse, opposite, adjacent): ", side_a)
 
         # if Side A is hypotenuse, add maximum value to the length (cannot exceed length of side A)
         if side_a == "hypotenuse":
@@ -461,13 +442,13 @@ while carry_on == "":
         # append the length of C to the wanted list
         append_input(side_c, length_c)
 
-        carry_on = input("\nPress <ENTER> to continue or anyhting else to print the results\n")
+        carry_on = input("\nPress <ENTER> to use the calculator again\nOR anything else to print the results\n")
 
 print()
 triangle_side_frame = pandas.DataFrame(triangle_side_dict)
 triangle_angle_frame = pandas.DataFrame(triangle_angle_dict)
 
-round_to = num_check("How many decimal places? ", "Please enter a number between 1 and 5\n", -1, 6, int)
+round_to = num_check("How many decimal places? ", "Please enter a number between 0 and 5\n", -1, 6, int)
 
 # rounding the whole data frame to users choice
 triangle_side_frame = triangle_side_frame.round(round_to)
@@ -475,11 +456,11 @@ triangle_angle_frame = triangle_angle_frame.round(round_to)
 
 
 print()
-print("*** Triangle Lengths ***")
+print("\t*** Triangle Lengths ***")
 print(triangle_side_frame)
 
 print()
 
-print("*** Triangle Angles (degrees) ***")
+print("\t*** Triangle Angles (degrees) ***")
 print(triangle_angle_frame)
 print()
