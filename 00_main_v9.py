@@ -318,7 +318,7 @@ yes_no = [
 
 
 
-instructions_list = "\n***WELCOME***\nThis program helps the user work out values of a right angled triangle!\nYou will be asked to enter known information about the triangle in order for the program to calculate unknown values of triangles.\nAll the program needs is ->\n1) Side name [Hypotenuse, Adjacent, Opposite] (corresponding to the angle) and its length PLUS the known angle\n2) Two different side names [Hypotenuse, Adjacent, Opposite] and their lengths (adjacent/opposite cannot be longer than hypotenuse)\n\nAt the end you will be asked to round your answers to the nearest decimal place\nAll the triangle values will be printed in a list"
+instructions_list = "\n***WELCOME***\nThis program helps the user work out values of a right angled triangle!\nYou will be asked to enter known information about the triangle in order for the program to calculate unknown values of triangles.\nAll the program needs is ->\n1) Side name [Hypotenuse, Adjacent, Opposite] (corresponding to the angle) and its length PLUS the known angle\n2) Two different side names [Hypotenuse, Adjacent, Opposite] and their lengths (adjacent/opposite cannot be longer than hypotenuse)\n\nAt the end you will be asked to round your answers to the nearest decimal place\nAll the triangle values will be printed in a list\n |\ \n | \ \n |  \ \n |   \ \n|____\ \n"
 
 
 instructions = ""
@@ -353,18 +353,16 @@ while carry_on == "":
     print("  |______\ ")
     print(" C   a    B")
 
-    # Ask for known values of for the first side
+
+    # Ask for known values
     side_a = get_side("Known side (hypotenuse, opposite, adjacent): ")
 
-    #
     length_a = num_check("Length of {}: ".format(side_a), "Error, make sure your input is a number above 0\n", 0, float('inf'), float)
 
-    # appending the first side + length
+    # appending "Side A" and "Length A"
     append_input(side_a, length_a)
 
-    # ask user if they know the second side
-    know_side_b = input("Is another side known? (y/n) ")
-    know_side_b = string_check(know_side_b, yes_no)
+    know_side_b = input("Is another side ")
 
     # Ask for side b
     side_b = second_side("\n-Keep blank if the angle is known-\nName of side B: ", side_a)
