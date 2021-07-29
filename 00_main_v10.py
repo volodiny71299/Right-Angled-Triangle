@@ -1,5 +1,5 @@
-# main code v6
-# Put the whole code in a loop until exit code is given
+# Final Code (version 10)
+# All functions included, has instructions, loop for code, prints length and angle values
 # Sources for codes ->
 # Extract function - https://www.geeksforgeeks.org/python-get-first-element-of-each-sublist/
 # List with no brackets (print) - https://stackoverflow.com/questions/11178061/print-list-without-brackets-in-a-single-row
@@ -8,9 +8,6 @@
 # import libraries
 import math
 import pandas
-
-# np.random.seed(25)
-
 # Functions list
 
 
@@ -311,9 +308,7 @@ yes_no = [
     ["no", "n"]
 ]
 
-instructions_list = ""
-
-instructions = "*** WELCOME ***\n" \
+instructions_list = "*** WELCOME ***\n" \
                "This program helps the user work out values of a right angled triangle!\n" \
                "You will be asked to enter information about the triangle in order for the program to calculate values of the triangle.\n" \
                "1) Enter a known side value\n" \
@@ -323,6 +318,8 @@ instructions = "*** WELCOME ***\n" \
                "\t- If no, you will be asked to enter an angle value (between 0 and 90)\n" \
                "4) You will be asked to loop the program or print the results\n" \
                "Good luck!\n"
+
+instructions = ""
 
 while instructions != "invalid input":
 
